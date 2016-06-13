@@ -17,7 +17,7 @@ func (t *SimpleChaincode) Init(stub *shim.ChaincodeStub, function string, args [
     }
 
     err := stub.PutState("hello_world", []byte(args[0]))
-    //stub.PutState("a",[]byte(args[0]))
+    stub.PutState("a",'hi there')
     if err != nil {
         return nil, err
     }
