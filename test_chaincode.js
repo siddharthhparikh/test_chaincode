@@ -197,7 +197,7 @@ if(manual.credentials.users) users = manual.credentials.users;
             zip_url: 'https://github.com/siddharthhparikh/test_chaincode/archive/master.zip',
             unzip_dir: 'test_chaincode-master',
             git_url: 'https://github.com/siddharthhparikh/test_chaincode',
-            deployed_name: '2450c95bc77e124c766ff650c2f4642e5c0bc2d576ee67db130900750cddc5982e295f320fd5dff7aca2f61fa7cc673fcdcc8a7464f94c68eeccdb14b2384a75'
+            //deployed_name: '2450c95bc77e124c766ff650c2f4642e5c0bc2d576ee67db130900750cddc5982e295f320fd5dff7aca2f61fa7cc673fcdcc8a7464f94c68eeccdb14b2384a75'
         }
 
     };
@@ -211,7 +211,7 @@ if(manual.credentials.users) users = manual.credentials.users;
         //app2.setup(ibc, cc);
         chaincode = cc;
     // Step 4 ==================================
-        if(cc.details.deployed_name === ""){                //decide if I need to deploy or not
+        if(!cc.details.deployed_name  || cc.details.deployed_name === ""){                //decide if I need to deploy or not
         //if(cc.details.deployed_name === "") {
             cc.deploy('init', ['99'], null, cb_deployed);
         }
