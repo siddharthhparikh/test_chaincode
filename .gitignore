@@ -9,3 +9,6 @@ cc_summaries/*.json
 .idea
 .tmp
 test.js
+
+# Compiled Chaincode
+test_chaincode.exe
