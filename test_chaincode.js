@@ -212,7 +212,7 @@ if(manual.credentials.users) users = manual.credentials.users;
     // Step 4 ==================================
         if(!cc.details.deployed_name || cc.details.deployed_name === ""){                //decide if I need to deploy or not
         //if(cc.details.deployed_name === "") {
-            cc.deploy('init', ['99'], null, cb_deployed);
+            cc.deploy('init', ['98'], null, cb_deployed);
         }
         else{
             console.log('chaincode summary file indicates chaincode has been previously deployed');
