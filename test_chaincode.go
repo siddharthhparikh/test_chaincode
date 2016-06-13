@@ -16,7 +16,7 @@ func (t *SimpleChaincode) Init(stub *shim.ChaincodeStub, function string, args [
         return nil, errors.New("Incorrect number of arguments. Expecting 1")
     }
 
-    stub.PutState("hello_world", []byte('hi there'))
+    err := stub.PutState("hello_world", []byte(args[0]))
     //stub.PutState("a",[]byte(args[0]))
     if err != nil {
         return nil, err
@@ -35,7 +35,7 @@ func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args
     } else if function == "write" {
         return t.write(stub, args)
     }
-    //fmt.Println("invoke did not find func: " + function)
+    fmt.Println("invoke did not find func: " + function)
 
     return nil, errors.New("Received unknown function invocation")
 }
@@ -50,7 +50,7 @@ func (t *SimpleChaincode) write(stub *shim.ChaincodeStub, args []string) ([]byte
 
     name = args[0]                            //rename for fun
     value = args[1]
-    //stub.PutState(name, []byte(value))  //write the variable into the chaincode state
+    stub.PutState(name, []byte(value))  //write the variable into the chaincode state
     //if err != nil {
     //    return nil, err
     //}
