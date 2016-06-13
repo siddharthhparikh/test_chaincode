@@ -186,6 +186,7 @@ var peers = manual.credentials.peers;
 var users = null;                                                                       //users are only found if security is on
 if(manual.credentials.users) users = manual.credentials.users;
 
+    var chaincode;
     var options =   {
         network:{
             peers: peers,
@@ -207,19 +208,21 @@ if(manual.credentials.users) users = manual.credentials.users;
     function cb_ready(err, cc){                             //response has chaincode functions
         //app1.setup(ibc, cc);
         //app2.setup(ibc, cc);
-
+        chaincode = cc;
     // Step 4 ==================================
-        if(cc.details.deployed_name === ""){                //decide if I need to deploy or not
+        if(!cc.details.deployed_name || cc.details.deployed_name === ""){                //decide if I need to deploy or not
             cc.deploy('init', ['99'], null, cb_deployed);
         }
         else{
             console.log('chaincode summary file indicates chaincode has been previously deployed');
-            cb_deployed(cc);
+            cb_deployed(cc,err);
         }
     }
 
     // Step 5 ==================================
-    function cb_deployed(chaincode){
+    function cb_deployed(){
         console.log('sdk has deployed code and waited');
-        chaincode.query.read(['a']);
-    }
+
+        chaincode.query.read(['hello_world']);
+        //chaincode.query.read(a)
+}

@@ -12,18 +12,18 @@ type SimpleChaincode struct {
 }
 
 func (t *SimpleChaincode) Init(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
-    //if len(args) != 1 {
-    //    return nil, errors.New("Incorrect number of arguments. Expecting 1")
-    //}
+    if len(args) != 1 {
+        return nil, errors.New("Incorrect number of arguments. Expecting 1")
+    }
 
-    stub.PutState("hello_world", []byte(args[0]))
-    stub.PutState("a",[]byte(args[0]))
-    //if err != nil {
-    //    return nil, err
-    //}
+    stub.PutState("hello_world", []byte('hi there'))
+    //stub.PutState("a",[]byte(args[0]))
+    if err != nil {
+        return nil, err
+    }
 
     //return nil, nil
-    return []byte("hello world"),nil
+    return nil,nil
 }
 
 func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
@@ -50,7 +50,7 @@ func (t *SimpleChaincode) write(stub *shim.ChaincodeStub, args []string) ([]byte
 
     name = args[0]                            //rename for fun
     value = args[1]
-    stub.PutState(name, []byte(value))  //write the variable into the chaincode state
+    //stub.PutState(name, []byte(value))  //write the variable into the chaincode state
     //if err != nil {
     //    return nil, err
     //}
