@@ -63,7 +63,7 @@ func (t *SimpleChaincode) Query(stub *shim.ChaincodeStub, function string, args 
     if function == "read" {                            //read a variable
         return t.read(stub, args)
     }
-    //fmt.Println("query did not find func: " + function)
+    fmt.Println("query did not find func: " + function)
 
     return nil, errors.New("Received unknown function query")
 }
@@ -72,11 +72,11 @@ func (t *SimpleChaincode) read(stub *shim.ChaincodeStub, args []string) ([]byte,
     var name, jsonResp string
     var err error
 
-    //if len(args) != 1 {
-    //    return nil, errors.New("Incorrect number of arguments. Expecting name of the var to query")
-    //}
+    if len(args) != 1 {
+        return nil, errors.New("Incorrect number of arguments. Expecting name of the var to query")
+    }
 
-    name = json.UnMarshal(args[0])
+    name = args[0]
     valAsbytes, err := stub.GetState(name)
     if err != nil {
         jsonResp = "{\"Error\":\"Failed to get state for " + name + "\"}"

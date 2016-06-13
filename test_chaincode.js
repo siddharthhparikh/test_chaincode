@@ -221,23 +221,5 @@ if(manual.credentials.users) users = manual.credentials.users;
     // Step 5 ==================================
     function cb_deployed(chaincode){
         console.log('sdk has deployed code and waited');
-        a = {
-  "jsonrpc": "2.0",
-  "method": "query",
-  "params": {
-    "type": 1,
-    "chaincodeID": {
-      "name": "14b711be6f0d00b190ea26ca48c22234d93996b6e625a4b108a7bbbde064edf0179527f30df238d61b66246fe1908005caa5204dd73488269c8999276719ca8b",
-    },
-    "ctorMsg": {
-      "function": "read",
-      "args": [
-        "a"
-      ],
-    },
-    "secureContext": "user_type1_6e9bf964a8",
-  },
-  "id": 1,
-}
-        chaincode.query.read(JSON.stringify(a));
+        chaincode.query.read(['a']);
     }
