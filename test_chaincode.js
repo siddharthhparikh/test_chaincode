@@ -225,7 +225,7 @@ if(manual.credentials.users) users = manual.credentials.users;
     function cb_deployed(){
         console.log('sdk has deployed code and waited');
 
-        chaincode.query.read(['hello_world'],function (err,res) {
+        chaincode.query.read(['hello_world'],function (err, res) {
               console.log("hello_world error:", err);
               console.log("hello_world res:", res);
         });
