@@ -197,7 +197,7 @@ if(manual.credentials.users) users = manual.credentials.users;
             zip_url: 'https://github.com/siddharthhparikh/test_chaincode/archive/master.zip',
             unzip_dir: 'test_chaincode-master',
             git_url: 'https://github.com/siddharthhparikh/test_chaincode',
-            //deployed_name: '2450c95bc77e124c766ff650c2f4642e5c0bc2d576ee67db130900750cddc5982e295f320fd5dff7aca2f61fa7cc673fcdcc8a7464f94c68eeccdb14b2384a75'
+            deployed_name: '198f19813acec0256040569709cb433bb4d387bd64d573c0fec42bac5b6a8018d61835d61ecaea01d7e314e35441d2e31ec5dbce63610e5dc9eb3d72317638e2'
         }
 
     };
@@ -225,10 +225,12 @@ if(manual.credentials.users) users = manual.credentials.users;
     function cb_deployed(){
         console.log('sdk has deployed code and waited');
 
-        chaincode.query.read(['hello_world'],function (err,res) {
-              console.log(res);
+        chaincode.query.read(['hello_world'],function (err, res) {
+              console.log("hello_world error:", err);
+              console.log("hello_world res:", res);
         });
         chaincode.query.read(['a'],function (err, res) {
-              console.log(res);
+          console.log("a error:", err);
+          console.log("a res:", res);
         });//chaincode.query.read(a)
 }
